@@ -1,8 +1,12 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <h1>Hi, Doot!</h1>
+    <h1>Fika schedule at Embedded Systems</h1>
     {% for user in users %}
-    <div><p>{{ user.name }} says: <b>{{ user.email }}</b></p></div>
+    <div class="column">
+        <div class="row">
+            <p>Week {{ user.week }}: <b>{{ user.name }}</b></p>
+        </div>
+    </div>
     {% endfor %}
 {% endblock %}

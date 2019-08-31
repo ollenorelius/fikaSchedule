@@ -2,15 +2,24 @@ from app import app_flask
 from app import user_controller
 from flask import Response
 from flask import render_template, redirect
-from app import database_model
+from app import database_model, state_model
 from app.forms import AddUserForm, AddRequestForm, RemoveRequestForm
 from app.UserModel import UserModel as UserModel
 from app.send_email import send_email, send_html
 from config import Config
+import datetime
 
 @app_flask.route('/')
 def index():
-    return render_template("index.html", users = database_model.get_all_users())
+    users = database_model.get_all_users()
+    state_model.load_state()
+    index = state_model.state["index"] % len(users)
+    users = users[index:] + users[:index]
+    current_week = datetime.datetime.today().isocalendar()[1]
+    for user, week in zip(users, range(current_week, current_week+len(users))):
+        user.week = week
+
+    return render_template("index.html", users=users)
 
 @app_flask.route('/add/<key>', methods=["GET", "POST"])
 def add_user(key):
@@ -30,6 +39,7 @@ def add_user(key):
     else:
         return Response("Invalid key", 403)
 
+
 @app_flask.route('/remove/<key>', methods=["GET", "POST"])
 def remove_user(key):
     form = RemoveRequestForm()
@@ -42,6 +52,7 @@ def remove_user(key):
         return render_template("remove_user.html", form=form)
     else:
         return Response("Invalid key", 403)
+
 
 @app_flask.route('/add_request', methods=["GET", "POST"])
 def add_request():

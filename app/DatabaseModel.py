@@ -22,7 +22,7 @@ class DatabaseModel():
 
     def add_user(self, user_model: UserModel):
         conn = self.open_db()
-        command = "INSERT INTO users VALUES (?,?,?,?,?,?);"
+        command = "INSERT INTO users ( name, email, slack, join_date, last_fika, times_held ) VALUES (?,?,?,?,?,?);"
         c = conn.cursor()
         c.execute(command, [user_model.name, user_model.email, user_model.slack, int(time.time()), 0, 0])
         conn.commit()
@@ -37,7 +37,7 @@ class DatabaseModel():
 
     def add_join_request(self, email):
         conn = self.open_db()
-        command = "INSERT INTO join_requests VALUES(?,?,?);"
+        command = "INSERT INTO join_requests ( email, uuid, timestamp ) VALUES(?,?,?);"
         c = conn.cursor()
         key = uuid.uuid4()
         c.execute(command, [email, str(key), time.time()])
@@ -53,7 +53,7 @@ class DatabaseModel():
 
     def add_leave_request(self, email):
         conn = self.open_db()
-        command = "INSERT INTO leave_requests VALUES(?,?,?);"
+        command = "INSERT INTO leave_requests ( email, uuid, timestamp ) VALUES (?,?,?);"
         c = conn.cursor()
         key = uuid.uuid4()
         c.execute(command, [email, str(key), time.time()])
