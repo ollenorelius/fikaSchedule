@@ -12,7 +12,7 @@ class DatabaseModel():
             conn = sqlite3.connect("database.db")
         else:
             conn = sqlite3.connect("database.db")
-            with open("database_def.sql") as f:
+            with open("app/database_def.sql") as f:
                 for line in f:
                     c = conn.cursor()
                     c.execute(line)
