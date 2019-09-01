@@ -1,20 +1,29 @@
 <html>
     <head>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link rel="stylesheet" href="/static/style.css">
         <title>Fika Scheduling by Olle</title>
     </head>
     <body>
-        <div class="row"> 
+        <div class="row" style="background-color:#ffbf95"> 
             <div class="col-2"></div>
-            <div class="col-sm">
-                <a href="/">Home</a>
-            </div>
-            <div class="col-sm">
-                <a href="/add_request">Add yourself!</a>
-            </div>
-            <div class="col-sm">
-                <a href="/remove_request">I don't want to be on the list anymore</a>
-            </div>
+            <a href="/" class="col-sm m-4 topbar-button" >
+                <div class="m-auto width: 200px height: 60px">
+                    <div class="m-4 link-text">
+                        Home
+                    </div>
+                </div>
+            </a>
+            <a href="/add_request" class="col-sm m-4 topbar-button">
+                <div class="m-4 link-text">
+                    Add yourself!
+                </div>
+            </a>
+            <a href="/remove_request" class="col-sm m-4 topbar-button">
+                <div class="m-4 link-text">
+                    I don't want to be on the list anymore
+                </div>
+            </a>
             <div class="col-2"></div>
         </div>
         <hr>

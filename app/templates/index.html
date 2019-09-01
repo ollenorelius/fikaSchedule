@@ -4,8 +4,8 @@
     <h1>Fika schedule at Embedded Systems</h1>
     {% for user in users %}
     <div class="column">
-        <div class="row card">
-            <p>Week {{ user.week }}: <b>{{ user.name }}</b></p>
+        <div class="row m-md-2 m-sm-2 card bg-light">
+            <h5 class="card-title m-md-5 m-sm-3">Week {{ user.week }}: <b>{{ user.name }}</b></h5>
         </div>
     </div>
     {% endfor %}
