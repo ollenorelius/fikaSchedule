@@ -13,11 +13,12 @@ import datetime
 def index():
     users = database_model.get_all_users()
     state_model.load_state()
-    index = state_model.state["index"] % len(users)
-    users = users[index:] + users[:index]
-    current_week = datetime.datetime.today().isocalendar()[1]
-    for user, week in zip(users, range(current_week, current_week+len(users))):
-        user.week = week
+    if len(users) != 0:
+        index = state_model.state["index"] % len(users)
+        users = users[index:] + users[:index]
+        current_week = datetime.datetime.today().isocalendar()[1]
+        for user, week in zip(users, range(current_week, current_week+len(users))):
+            user.week = week
 
     return render_template("index.html", users=users)
 
