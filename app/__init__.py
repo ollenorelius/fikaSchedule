@@ -1,3 +1,5 @@
+import threading
+
 from flask import Flask
 from app import UserController
 from app import DatabaseModel
@@ -11,6 +13,9 @@ database_model = DatabaseModel.DatabaseModel()
 state_model = StateModel.StateModel()
 user_controller =  UserController.UserController(database_model)
 
+
+from app import update_date
+threading.Thread(target=update_date.run,daemon=True).start()
 
 from app import backend_routes
 from app import frontend_routes
