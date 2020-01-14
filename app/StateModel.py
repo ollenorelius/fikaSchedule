@@ -4,7 +4,8 @@ import datetime
 
 class StateModel():
     state = None
-    def __init__(self):
+    def __init__(self, state_file):
+        self.state_file_name = state_file
         try:
             self.load_state()
         except FileNotFoundError:
@@ -12,11 +13,11 @@ class StateModel():
             self.save_state()
 
     def load_state(self):
-        with open(Config.STATE_FILE, 'r') as f:
+        with open(self.state_file_name, 'r') as f:
             self.state = json.load(f)
 
     def save_state(self):
-        with open(Config.STATE_FILE, 'w') as f:
+        with open(self.state_file_name, 'w') as f:
             json.dump(self.state, f)
 
     def init_state(self):
@@ -24,4 +25,3 @@ class StateModel():
                       "start_week": datetime.datetime.today().isocalendar()[1]
         }
 
-    

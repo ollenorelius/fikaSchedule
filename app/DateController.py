@@ -1,6 +1,7 @@
 import threading
 import datetime
 from app.StateModel import StateModel
+import time
 
 class DateController():
     def __init__(self, state_model: StateModel):
@@ -10,7 +11,7 @@ class DateController():
         threading.Thread(target=self.date_checker_thread, daemon=True).start()
     def date_checker_thread(self):
         while True:
-            check_date()
+            self.check_date()
             time.sleep(600) # Only check every ten minutes!
 
     def check_date(self):
