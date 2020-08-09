@@ -8,6 +8,9 @@ stop:
 remove:
 	docker rm $(NAME)
 
+restart:
+	docker restart $(NAME)
+
 start_docker:
 	docker run -dit -p $(PORT):$(PORT) -v $(CURDIR)/config.py:/config.py -v $(CURDIR)/state.json:/state.json -v $(CURDIR)/database.db:/database.db --restart unless-stopped --name $(NAME) $(NAME) 
 	
