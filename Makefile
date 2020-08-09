@@ -1,6 +1,9 @@
 NAME=fika
-PORT=5200
 DEBUG_PORT=5201
+export PORT = 5200
+
+build: 
+	docker build . -t $(NAME) --build-arg port=$(PORT)
 
 stop: 
 	docker kill $(NAME)
@@ -14,9 +17,6 @@ restart:
 start_docker:
 	docker run -dit -p $(PORT):$(PORT) -v $(CURDIR)/config.py:/config.py -v $(CURDIR)/state.json:/state.json -v $(CURDIR)/database.db:/database.db --restart unless-stopped --name $(NAME) $(NAME) 
 	
-build:
-	docker build . -t $(NAME)
-
 redeploy_docker: stop remove build start_docker
 
 debug:
