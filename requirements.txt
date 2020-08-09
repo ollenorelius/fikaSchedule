@@ -1,4 +1,5 @@
 flask
 flask_wtf
 gunicorn
+email_validator
 

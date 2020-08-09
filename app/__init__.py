@@ -13,7 +13,7 @@ app_flask.config.from_object(Config)
 database_model = DatabaseModel.DatabaseModel()
 state_model = StateModel.StateModel(Config.STATE_FILE)
 user_controller =  UserController.UserController(database_model)
-date_controller = DateController.DateController(state_model)
+date_controller = DateController.DateController(state_model, database_model)
 
 
 #from app import update_date

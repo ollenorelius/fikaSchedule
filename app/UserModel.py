@@ -14,3 +14,13 @@ class UserModel:
             self.join_date =  db_line[4]
             self.last_fika =  db_line[5]
             self.times_hosted =  db_line[6]
+            
+    def to_dict(self):
+        return {
+            'name': self.name,
+            'email': self.email,
+            'slack': self.slack,
+            'join_date': self.join_date,
+            'last_fika': self.last_fika,
+            'times_hosted': self.times_hosted
+        }

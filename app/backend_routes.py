@@ -1,5 +1,6 @@
 from app import app_flask
 from app import user_controller
+from app import database_model, state_model
 from flask import Response
 from flask import request
 
@@ -21,5 +22,5 @@ def get_user(email):
 
 @app_flask.route("/get_users")
 def get_all_users():
-    response = user_controller.get_all_users()
+    response = str([x.to_dict() for x in database_model.get_all_users()])
     return response

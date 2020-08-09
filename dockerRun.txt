@@ -1,0 +1,1 @@
+docker run -dit -p 5200:5200 -v /home/pi/projekt/fikaSchedule/config.py:/config.py -v /home/pi/projekt/fikaSchedule/state.json:/state.json -v /home/pi/projekt/fikaSchedule/database.db:/database.db --restart unless-stopped --name fika fika

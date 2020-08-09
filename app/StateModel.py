@@ -8,7 +8,9 @@ class StateModel():
         self.state_file_name = state_file
         try:
             self.load_state()
+            print("opened state file, state = "  + str(self.state))
         except FileNotFoundError:
+            print("State file not found! Creating empty state.")
             self.init_state()
             self.save_state()
 
