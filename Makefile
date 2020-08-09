@@ -20,5 +20,5 @@ start_docker:
 redeploy_docker: stop remove build start_docker
 
 debug:
-	gunicorn3 app:app_flask -b 0.0.0.0:$(DEBUG_PORT)
+	gunicorn3 app:app_flask -b 0.0.0.0:$(DEBUG_PORT) --log-level=DEBUG -w 4 --reload
 

@@ -16,8 +16,6 @@ def index():
     if len(users) != 0:
         index = state_model.state["index"] % len(users)
         users = users[index:] + users[:index]
-        print(index)
-        print([x.name for x in users])
         current_week = datetime.datetime.today().isocalendar()[1]
         for user, week in zip(users, range(current_week, current_week+len(users))):
             user.week = ((week-1) % 52) + 1
