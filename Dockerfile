@@ -11,9 +11,6 @@ RUN pip install --no-cache-dir -r requirements.txt
 ENV FLASK_RUN_PORT=80
 ARG port=5200
 ENV PORT=${port}
-RUN echo ${port}
-RUN ["sh", "-c", "printenv"]
-RUN ["sh", "-c", "echo app:app_flask -b 0.0.0.0:$PORT"]
 CMD ["sh", "-c", "gunicorn app:app_flask -b 0.0.0.0:${PORT}"]
 
 
