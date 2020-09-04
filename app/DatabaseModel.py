@@ -20,11 +20,22 @@ class DatabaseModel():
         return conn
 
 
+    
+
     def add_user(self, user_model: UserModel):
+        usercount = len(self.get_all_users())
         conn = self.open_db()
-        command = "INSERT INTO users ( name, email, slack, join_date, last_fika, times_held ) VALUES (?,?,?,?,?,?);"
+        command = "INSERT INTO users ( name, email, slack, join_date, last_fika, times_held, ordering, active ) VALUES (?,?,?,?,?,?,?,?);"
         c = conn.cursor()
-        c.execute(command, [user_model.name, user_model.email, user_model.slack, int(time.time()), 0, 0])
+        c.execute(command, [user_model.name,
+                            user_model.email,
+                            user_model.slack,
+                            int(time.time()),
+                            0,
+                            0,
+                            usercount + 1, # Add the new user last. These indexes are one-indexed.
+                            1]
+                 )
         conn.commit()
     
     def remove_user(self, email):

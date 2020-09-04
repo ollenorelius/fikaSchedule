@@ -11,7 +11,8 @@ import datetime
 
 @app_flask.route('/')
 def index():
-    users = database_model.get_all_users()
+    users = sorted(database_model.get_all_users(), key=lambda x: x.ordering)
+    
     state_model.load_state()
     if len(users) != 0:
         index = state_model.state["index"] % len(users)
