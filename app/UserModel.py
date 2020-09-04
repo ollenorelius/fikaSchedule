@@ -1,5 +1,5 @@
 class UserModel:
-        
+    uid = 0   
     name = ""
     email = ""
     slack = ""
@@ -10,6 +10,7 @@ class UserModel:
     active = 0
     def __init__(self, db_line=None):
         if db_line is not None:
+            self.uid =  db_line[0]
             self.name =  db_line[1]
             self.email =  db_line[2]
             self.slack =  db_line[3]
@@ -21,6 +22,7 @@ class UserModel:
             
     def to_dict(self):
         return {
+            'uid': self.uid,
             'name': self.name,
             'email': self.email,
             'slack': self.slack,

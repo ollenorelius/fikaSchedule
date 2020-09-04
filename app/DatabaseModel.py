@@ -45,9 +45,13 @@ class DatabaseModel():
         c.execute(command, [email])
         conn.commit()
 
-    def swap_users(self, user1, user2):
+    def swap_users(self, user1: UserModel, user2: UserModel):
         conn = self.open_db()
-        command = " "
+        command = " UPDATE users SET ordering = ? WHERE id = ?;"
+        c = conn.cursor()
+        c.execute (command, [user1.ordering, user2.uid])
+        c.execute (command, [user2.ordering, user1.uid])
+        conn.commit()
 
     def add_join_request(self, email):
         conn = self.open_db()
