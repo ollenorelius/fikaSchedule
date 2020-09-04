@@ -3,6 +3,7 @@ from app import user_controller
 from app import database_model, state_model
 from flask import Response
 from flask import request
+import json
 
 @app_flask.route('/add_user', methods=['GET','POST'])
 def add_user_backend():
@@ -22,5 +23,5 @@ def get_user(email):
 
 @app_flask.route("/get_users")
 def get_all_users():
-    response = str([x.to_dict() for x in database_model.get_all_users()])
+    response = json.dumps([x.to_dict() for x in database_model.get_all_users()])
     return response

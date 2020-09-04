@@ -34,6 +34,9 @@ class DatabaseModel():
         c.execute(command, [email])
         conn.commit()
 
+    def swap_users(self, user1, user2):
+        conn = self.open_db()
+        command = " "
 
     def add_join_request(self, email):
         conn = self.open_db()
