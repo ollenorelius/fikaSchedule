@@ -1,6 +1,7 @@
-from app import app_flask
-from app import user_controller
-from app import database_model, state_model
+from app import APP_FLASK as app_flask
+from app import USER_CONTROLLER as user_controller
+from app import DATABASE_MODEL as database_model
+from app import STATE_MODEL as state_model
 from flask import Response
 from flask import request
 import json

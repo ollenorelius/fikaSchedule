@@ -7,13 +7,15 @@ from app import StateModel
 from app import DateController
 from config import Config
 
-app_flask = Flask(__name__)
-app_flask.config.from_object(Config)
+APP_FLASK = Flask(__name__)
+APP_FLASK.config.from_object(Config)
 
-database_model = DatabaseModel.DatabaseModel()
-state_model = StateModel.StateModel(Config.STATE_FILE)
-user_controller =  UserController.UserController(database_model)
-date_controller = DateController.DateController(state_model, database_model)
+app_flask = APP_FLASK
+
+DATABASE_MODEL = DatabaseModel.DatabaseModel()
+STATE_MODEL = StateModel.StateModel(Config.STATE_FILE)
+USER_CONTROLLER = UserController.UserController(DATABASE_MODEL)
+DATE_CONTROLLER = DateController.DateController(STATE_MODEL, DATABASE_MODEL)
 
 
 #from app import update_date

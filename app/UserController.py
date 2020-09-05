@@ -1,5 +1,5 @@
-from app.DatabaseModel import DatabaseModel as DatabaseModel
-from app.UserModel import UserModel as UserModel
+from app.DatabaseModel import DatabaseModel
+from app.UserModel import UserModel
 from flask import Response
 
 class UserController:
@@ -18,10 +18,11 @@ class UserController:
         return Response("NIMPL", 200)
     
     def get_user_by_email(self, email):
-       user = self.database_model.get_user_by_email(email)
-       return Response(user, 200)
+        user = self.database_model.get_user_by_email(email)
+        return Response(user, 200)
 
     def get_all_users(self):
         users = self.database_model.get_all_users()
         print(users)
         return Response(str(users), 200)
+

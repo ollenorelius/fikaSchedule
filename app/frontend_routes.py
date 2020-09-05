@@ -1,8 +1,9 @@
-from app import app_flask
-from app import user_controller
+from app import APP_FLASK as app_flask
+from app import USER_CONTROLLER as user_controller
 from flask import Response
 from flask import render_template, redirect
-from app import database_model, state_model
+from app import DATABASE_MODEL as database_model
+from app import STATE_MODEL as state_model
 from app.forms import AddUserForm, AddRequestForm, RemoveRequestForm
 from app.UserModel import UserModel as UserModel
 from app.send_email import send_email, send_html
