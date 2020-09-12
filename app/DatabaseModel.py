@@ -53,6 +53,20 @@ class DatabaseModel():
         c.execute (command, [user2.ordering, user1.uid])
         conn.commit()
 
+    def activate_user(self, user: UserModel):
+        conn = self.open_db()
+        command = " UPDATE users SET active = ? WHERE id = ?;"
+        c = conn.cursor()
+        c.execute (command, [1, user.uid])
+        conn.commit()
+        
+    def deactivate_user(self, user: UserModel):
+        conn = self.open_db()
+        command = " UPDATE users SET active = ? WHERE id = ?;"
+        c = conn.cursor()
+        c.execute (command, [0, user.uid])
+        conn.commit()
+
     def add_join_request(self, email):
         conn = self.open_db()
         command = "INSERT INTO join_requests ( email, uuid, timestamp ) VALUES(?,?,?);"
