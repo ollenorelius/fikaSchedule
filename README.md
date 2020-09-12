@@ -17,9 +17,9 @@ There is currently no convenient system for removing users as an admin, or swapp
 
 There is a simple Makefile with some useful targets, the most useful of which are:
 
-*debug*: Deploys a local instance of the fika system in debug mode (localhost:5201), without building the docker container.
+**debug**: Deploys a local instance of the fika system in debug mode (localhost:5201), without building the docker container.
 
-*redeploy_docker*: Takes down the running docker container, rebuilds it, and sets it back up with the latest code. 
+**redeploy_docker**: Takes down the running docker container, rebuilds it, and sets it back up with the latest code. 
 
 ## Misc
 
